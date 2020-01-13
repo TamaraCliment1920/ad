@@ -1,8 +1,40 @@
-﻿27/11/2019
+﻿GitHup
+
+Crear usuario en github:
+  Usuario: TamaraCliment1920
+  Correo:   
+  Contraseña: 
+
+ Crear repositorio:
+  Nombre: ad
+  Inicializar con README
+  
+ Clonar en mi home:
+  git clone https://github.com/TamaraCliment1920/ad.git
+
+Comandos:
+
+git status -> Ver el estado los archivos qeu tenemos en el repositorio y poder subir los que tengan alguna modificación.
+
+git add (archivo que queremos subir)-> Para añadir los archivos qeu posteriormente subiremos con el push.
+
+git commit -m "Pequeña descripción de los cambios o información que contiene el archivo"
+
+git push -> Para subir los archivos al repositorio
+
+git pull-> Descargar archivos 
+
+
+
+27/11/2019
 
 HIBERNATE.
 
 https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#associations
+
+    2.7.1 @ManyToOne
+    2.7.2 @OneToMany (en especial bidireccional)
+    2.8 Collections (en especial a partir de Collections of entities)
 
 GUIA DE USUARIO:
 
