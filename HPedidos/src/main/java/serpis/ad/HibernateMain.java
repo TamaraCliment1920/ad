@@ -13,13 +13,14 @@ public class HibernateMain {
 		System.out.println("2-Modificar");
 		System.out.println("3-Eliminar");
 		
-		Scanner tcl2=new Scanner(System.in);
+		Scanner tcl2 =new Scanner(System.in);
 		int op2=tcl2.nextInt();
 		
 		switch (op2) {
 		case 1:
 			
 			System.out.println("Vamos a Insertar");
+			
 				
 			break;
 
@@ -35,13 +36,13 @@ public class HibernateMain {
 	}
 
 
-	public static void nuevo() {
+	public static void nuevoPedido() {
 		
 	}
-	public static void modificar() {
+	public static void modificarPedido() {
 		
 	}
-	public static void eliminar() {
+	public static void eliminarPedido() {
 		
 	}
 } 
