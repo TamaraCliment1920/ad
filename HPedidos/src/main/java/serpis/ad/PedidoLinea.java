@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 @Entity
 public class PedidoLinea {
@@ -17,17 +19,29 @@ public class PedidoLinea {
 	@ManyToOne
 	@JoinColumn (name="articulo")
 	private Articulo articulo;
-	
 	private BigDecimal precio =BigDecimal.ZERO;
 	private BigDecimal unidades=BigDecimal.ZERO;
 	private BigDecimal importe=BigDecimal.ZERO;
+	
+	private PedidoLinea() {} //Hibernate necesita un ctor sin parámetros
+	
+	public PedidoLinea(Pedido pedido) {
+		this.pedido = pedido;
+		pedido.getPedidoLineas().add(this);
+	}
+		
 	
 	public Long getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
-		this.id = id;
+	public Pedido gertPedido() {
+		return pedido;
+	}
+	public void setArticulo(Articulo articulo) {
+		precio = articulo.getprecio();
+		unidades=BigDecimal.ONE;
+		this.articulo = articulo;
 	}
 	
 	public BigDecimal getPrecio() {
@@ -46,4 +60,14 @@ public class PedidoLinea {
 		this.unidades = unidades;
 	}
 	
+	@PrePersist
+	@PreUpdate
+	private void preGetImporte() {
+		importe = precio.multiply(unidades);
+	}
+	public BigDecimal getImporte() {
+		preGetImporte();
+		return importe;
+	}
+}
 }
