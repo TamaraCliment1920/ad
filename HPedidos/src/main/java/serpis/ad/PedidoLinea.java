@@ -3,6 +3,9 @@ package serpis.ad;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
@@ -11,6 +14,8 @@ import javax.persistence.PreUpdate;
 @Entity
 public class PedidoLinea {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	@ManyToOne
@@ -23,7 +28,7 @@ public class PedidoLinea {
 	private BigDecimal unidades=BigDecimal.ZERO;
 	private BigDecimal importe=BigDecimal.ZERO;
 	
-	private PedidoLinea() {} //Hibernate necesita un ctor sin parámetros
+	//private PedidoLinea() {} //Hibernate necesita un ctor sin parámetros
 	
 	public PedidoLinea(Pedido pedido) {
 		this.pedido = pedido;
@@ -70,4 +75,4 @@ public class PedidoLinea {
 		return importe;
 	}
 }
-}
+
