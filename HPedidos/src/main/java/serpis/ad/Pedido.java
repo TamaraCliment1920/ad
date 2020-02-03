@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 
 @Entity
@@ -40,6 +42,25 @@ public class Pedido {
 	}
 	public LocalDateTime getFecha() {
 		return fecha;
+	}
+	
+	@PrePersist
+	@PreUpdate
+	private void preGetImporte() {
+		importe = BigDecimal.ZERO;
+		for (PedidoLinea pedidoLinea : pedidoLineas)
+			importe = importe.add(pedidoLinea.getImporte());
+	}
+	public BigDecimal getImporte() {
+		preGetImporte();
+		return importe;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public List<PedidoLinea> getPedidoLineas() {
+	return pedidoLineas;
 	}
 	
 }
