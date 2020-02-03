@@ -28,7 +28,7 @@ public class PedidoLinea {
 	private BigDecimal unidades=BigDecimal.ZERO;
 	private BigDecimal importe=BigDecimal.ZERO;
 	
-	//private PedidoLinea() {} //Hibernate necesita un ctor sin parámetros
+	private PedidoLinea() {} //Hibernate necesita un ctor sin parámetros
 	
 	public PedidoLinea(Pedido pedido) {
 		this.pedido = pedido;
